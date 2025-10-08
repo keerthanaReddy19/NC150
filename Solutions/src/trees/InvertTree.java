@@ -1,6 +1,5 @@
 package trees;
 
-
 public class InvertTree {
     public static TreeNode invert(TreeNode root) {
 
