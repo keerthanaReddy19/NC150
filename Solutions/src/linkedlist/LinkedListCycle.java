@@ -9,7 +9,7 @@ Approach: Tortoise Hare Algorithm / Floyd’s Cycle Detection
 */
 
 
-package LinkedList;
+package linkedlist;
 
 public class LinkedListCycle {
 

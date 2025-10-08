@@ -1,4 +1,4 @@
-package LinkedList;
+package linkedlist;
 
 /**
  * LC143: You are given the head of a singly linked-list. The list can be represented as:
