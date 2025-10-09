@@ -1,7 +1,7 @@
 package trees;
 
 public class MaxDepth {
-    public int calcDepth(TreeNode root) {
+    public static int calcDepth(TreeNode root) {
         if(root==null)
         {
             return 0;
