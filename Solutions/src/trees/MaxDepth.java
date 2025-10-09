@@ -1,24 +1,16 @@
 package trees;
 
 public class MaxDepth {
-    public static int calcDepth(TreeNode root) {
-        if(root==null)
-        {
-            return 0;
-        }
-        int depth = 0;
-        return calcSum(root , depth);
-    }
 
-    public static int calcSum(TreeNode root, int sum)
+    public static int calcSum(TreeNode root)
     {
         if(root == null)
         {
             return 0;
         }
-        int lsum = 1 + calcSum(root.left, root.val);
-        int rsum = 1 + calcSum(root.right, root.val);
+        int lsum =  calcSum(root.left);
+        int rsum =  calcSum(root.right);
 
-        return Math.max(lsum,rsum);
+        return Math.max(lsum,rsum) + 1;
     }
 }

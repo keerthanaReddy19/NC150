@@ -25,6 +25,7 @@ if root is not part of it: right diameter or left diameter
  */
 
 public class Diameter {
+    /* TC: O(n^2)
     public static int calcDiameter(TreeNode root)
     {
         if(root == null)
@@ -39,7 +40,37 @@ public class Diameter {
         int current_diameter =  +  leftHeight + rightHeight;
 
         return Math.max((current_diameter), Math.max(leftHeight , rightHeight));
+    } */
+
+    /* optimised approach O(n) */
+
+    //global variable to track the diameter
+    static int ans = 0;
+
+    public int calcDiameter(TreeNode root) {
+
+        calcSum(root);
+
+        return ans;
+
     }
+
+    //Calc height and diameter
+    public static int calcSum(TreeNode root)
+    {
+        if(root == null)
+        {
+            return 0;
+        }
+        int lsum =  calcSum(root.left);
+        int rsum =  calcSum(root.right);
+
+        //Height + diameter
+        ans = Math.max(lsum, rsum) + 1;
+        return Math.max(lsum,rsum) + 1;
+    }
+
+
 
     public static void main(String[] args)
     {
@@ -53,7 +84,7 @@ public class Diameter {
         c.left = d;
         c.right = e;
 
-        System.out.println(calcDiameter(a));
+        System.out.println(calcSum(a));
 
     }
 }
