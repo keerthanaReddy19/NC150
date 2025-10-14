@@ -56,24 +56,20 @@ public class Diameter {
     }
 
     //Calc height and diameter
-    public static int calcSum(TreeNode root)
-    {
-        if(root == null)
-        {
+    public static int calcSum(TreeNode root) {
+        if (root == null) {
             return 0;
         }
-        int lsum =  calcSum(root.left);
-        int rsum =  calcSum(root.right);
+        int lsum = calcSum(root.left);
+        int rsum = calcSum(root.right);
 
         //Height + diameter
         ans = Math.max(lsum, rsum) + 1;
-        return Math.max(lsum,rsum) + 1;
+        return Math.max(lsum, rsum) + 1;
     }
 
 
-
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         TreeNode a = new TreeNode(3);
         TreeNode b = new TreeNode(9);
         TreeNode c = new TreeNode(20);
