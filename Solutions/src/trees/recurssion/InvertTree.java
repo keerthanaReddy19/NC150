@@ -1,4 +1,6 @@
-package trees;
+package trees.recurssion;
+
+import trees.node.TreeNode;
 
 public class InvertTree {
     public static TreeNode invert(TreeNode root) {

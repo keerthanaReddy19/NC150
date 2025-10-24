@@ -1,4 +1,6 @@
-package trees;
+package trees.recurssion;
+
+import trees.node.TreeNode;
 
 public class Traversal {
     public static void printTree(TreeNode root) {

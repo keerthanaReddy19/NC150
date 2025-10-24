@@ -1,4 +1,6 @@
-package trees;
+package trees.recurssion;
+
+import trees.node.TreeNode;
 
 public class BalancedTree {
     public boolean isBalanced(TreeNode root) {
@@ -25,6 +27,7 @@ public class BalancedTree {
       check if child node is unbalanced and return -1 instead of checking all the way up to parent */
 
         if (left == -1 || right == -1) return -1;
+
         if (Math.abs(left - right) > 1) return -1;
 
         return Math.max(left, right) + 1;

@@ -1,6 +1,8 @@
-package trees;
+package trees.recurssion;
 
-import static trees.IdenticalTree.*;
+import trees.node.TreeNode;
+
+import static trees.recurssion.IdenticalTree.*;
 
 public class IdenticalSubTree {
     public boolean isSubtree(TreeNode root, TreeNode subRoot) {

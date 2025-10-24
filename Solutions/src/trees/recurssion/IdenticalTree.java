@@ -1,4 +1,6 @@
-package trees;
+package trees.recurssion;
+
+import trees.node.TreeNode;
 
 public class IdenticalTree {
     public static boolean isSameTree(TreeNode p, TreeNode q) {

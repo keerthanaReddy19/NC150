@@ -1,4 +1,4 @@
-package trees;
+package trees.recurssion;
 
 /*
 LC:543: Given the root of a binary tree, return the length of the diameter of the tree.
@@ -24,6 +24,8 @@ if root is not part of it: right diameter or left diameter
 
  */
 
+import trees.node.TreeNode;
+
 public class Diameter {
     /* TC: O(n^2)
     public static int calcDiameter(TreeNode root)
@@ -42,16 +44,17 @@ public class Diameter {
         return Math.max((current_diameter), Math.max(leftHeight , rightHeight));
     } */
 
-    /* optimised approach O(n) */
+
+    // optimised approach O(n)
 
     //global variable to track the diameter
-    static int ans = 0;
+    static int diameter = 0;
 
     public int calcDiameter(TreeNode root) {
 
         calcSum(root);
 
-        return ans;
+        return diameter;
 
     }
 
@@ -63,22 +66,26 @@ public class Diameter {
         int lsum = calcSum(root.left);
         int rsum = calcSum(root.right);
 
-        //Height + diameter
-        ans = Math.max(lsum, rsum) + 1;
+        //curr diameter of root node
+        int d = lsum+rsum;
+        diameter = Math.max(d,diameter);
         return Math.max(lsum, rsum) + 1;
     }
 
 
     public static void main(String[] args) {
-        TreeNode a = new TreeNode(3);
-        TreeNode b = new TreeNode(9);
-        TreeNode c = new TreeNode(20);
-        TreeNode d = new TreeNode(15);
-        TreeNode e = new TreeNode(7);
+        TreeNode a = new TreeNode(1);
+        TreeNode b = new TreeNode(1);
+        TreeNode c = new TreeNode(1);
+        TreeNode d = new TreeNode(1);
+        TreeNode e = new TreeNode(1);
+        TreeNode f = new TreeNode(1);
         a.left = b;
+        b.left = d;
         a.right = c;
-        c.left = d;
-        c.right = e;
+        b.right = e;
+        e.left = f;
+
 
         System.out.println(calcSum(a));
 

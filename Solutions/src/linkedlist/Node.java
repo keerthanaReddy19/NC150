@@ -1,7 +1,7 @@
 package linkedlist;
 
 public class Node<T> {
-    T value;
+    public T value;
     Node<T> next;
 
     Node(T value)
