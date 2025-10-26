@@ -3,7 +3,7 @@ package graphs.recurssion;
 import java.util.HashMap;
 import java.util.*;
 
-public class undirectedPath {
+public class UndirectedPath {
 
     public static boolean undirectedPath(List<List<String>> edges, String nodeA, String nodeB) {
 
