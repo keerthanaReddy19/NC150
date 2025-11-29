@@ -1,5 +1,5 @@
 //Read from the file and print its transposed content to stdout.
-package Files;
+package files;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
