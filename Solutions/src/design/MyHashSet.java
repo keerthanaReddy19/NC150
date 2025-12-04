@@ -9,7 +9,7 @@ Using modulus for primary array and division for secondary array
 T:C: 0(1)
 S:C: 0(n)
  */
-package arrays;
+package design;
 
 public class MyHashSet {
     int key;

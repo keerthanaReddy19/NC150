@@ -1,8 +1,19 @@
-package arrays;
+package twopointer;
 
 import java.util.*;
 
-//1,2,3,4,5    T =  6
+/*
+- sort the array
+
+- two pointer approach:
+  iterate from i = 0 to n
+    left = i+1
+    right = n-1
+
+- Store in HashSet to avoid duplicate entries.
+- Arrays.asList()
+ */
+
 public class ThreeSum {
     public List<List<Integer>> threeSum(int[] nums) {
 
