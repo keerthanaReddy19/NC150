@@ -1,17 +1,7 @@
 package linkedlist;
 
 public class ReverseLinkedList {
-    /*  h
-     N  1 -> 2 -> 3
-             P    c
-        nullN <- 1 <- 2 <- 3
 
-                       c
-        N <- 1 <- 2 <- 3
-                  P    h
-
-
-*/
 
 public static Node<Integer> reverseList(Node<Integer> head)
 {
@@ -30,6 +20,49 @@ public static Node<Integer> reverseList(Node<Integer> head)
     }
     return prev;
 }
+
+//    public class ListNode
+//    {
+//        ListNode next;
+//        int val;
+//
+//        ListNode()
+//        {
+//
+//        }
+//
+//        ListNode(int val)
+//        {
+//          this.val = val;
+//        }
+//
+//
+//        ListNode(int val, ListNode next)
+//        {
+//            this.val = val;
+//            this.next = next;
+//        }
+//
+//    }
+
+//    public ListNode reverseList(ListNode head) {
+//        ListNode nextNode;
+//        ListNode currNode = head;
+//        ListNode prevNode = null;
+//
+//
+//        while(currNode!=null)
+//        {
+//            nextNode = currNode.next;
+//            currNode.next = prevNode;
+//            prevNode = currNode;
+//            currNode = nextNode;
+//
+//        }
+//
+//        return prevNode;
+//
+//    }
 
 public static void main(String[] args)
 {

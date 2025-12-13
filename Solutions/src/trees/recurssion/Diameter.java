@@ -22,6 +22,7 @@ if root is part of it: left height + right height;
 if root is not part of it: right diameter or left diameter
 --> max((left height + right height), right-diameter, left diameter)
 
+Optmised Approach:
  */
 
 import trees.node.TreeNode;
@@ -58,7 +59,7 @@ public class Diameter {
 
     }
 
-    //Calc height and diameter
+    //Calc height and keep track of max_diameter at each level
     public static int calcSum(TreeNode root) {
         if (root == null) {
             return 0;
