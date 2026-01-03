@@ -1,4 +1,4 @@
-package graphs.recurssion;
+package graphs.connectedcomponents;
 
 import java.util.List;
 
@@ -83,6 +83,7 @@ public class MinIsland {
 
         if (visited[r][c] || "W".equals(grid.get(r).get(c)))
             return 0;
+
         visited[r][c] = true;
 
 

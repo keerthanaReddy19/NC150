@@ -1,12 +1,24 @@
-package graphs.recurssion;
+package graphs.connectedcomponents;
 
 import java.util.List;
 import java.util.HashSet;
 import java.util.AbstractMap.SimpleEntry;
 
+/* Track number of connected components
+
+Using DFS:
+While exploring a cell, immediately return false if the cell is out of grid bounds, is water ("W"), or has already been visited.
+if none of these conditions are true, mark the cell as visited and recursively explore all four directions.
+
+If exploration starts successfully from a cell, it represents one new island
+
+Similar: Flood Fill
+ */
+
 class IslandCount {
     public static int checkIslandCount(List<List<String>> grid) {
 
+        // HM or 2d array for trackign visited
         HashSet<SimpleEntry<Integer, Integer>> visited = new HashSet<>();
         int count = 0;
         for(int r = 0; r<grid.size(); r++)

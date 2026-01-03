@@ -1,4 +1,4 @@
-package graphs.recurssion;
+package graphs.connectedcomponents;
 
 import java.util.*;
 
