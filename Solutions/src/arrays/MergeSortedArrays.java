@@ -1,5 +1,11 @@
 package arrays;
 
+/*
+LC 88
+Since nums1 has extra space at the end, merge from right to left, placing the larger of the two current elements into its final position.
+If nums2 is exhausted, the remaining elements in nums1 are already correctly placed; if nums1 is exhausted, we copy all remaining elements from nums2.
+TC : O(m+n)
+ */
 public class MergeSortedArrays {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         int p1 = m-1;

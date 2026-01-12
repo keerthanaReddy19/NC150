@@ -13,24 +13,26 @@ public class LongestCommonPrefix {
 
     public String prefixLength(String[] strs) {
 
-        if (strs == null || strs.length == 0) return "";
-
-
-        StringBuilder result = new StringBuilder();
-
-        Arrays.sort(strs);
-
-        // Get the first and last strings
-        char[] first = strs[0].toCharArray();
-        char[] last = strs[strs.length - 1].toCharArray();
-
-        //compare
-        for (int i = 0; i < first.length; i++) {
-            if (first[i] != last[i]) break;
-            result.append(first[i]);
+        if (strs == null || strs.length == 0) {
+            return "";
         }
 
-        return result.toString();
-    }
+        Arrays.sort(strs); // O(n log n) n: number of strings
 
+        int length = strs.length;
+        char first[] = strs[0].toCharArray();
+        char last[] = strs[length - 1].toCharArray();
+
+        StringBuilder s = new StringBuilder();
+
+        int minLen = Math.min(first.length, last.length);
+
+        //O(m) m: len of shortest string
+        for (int i = 0; i < minLen; i++) {
+            if (first[i] == last[i]) {
+                s.append(first[i]);
+            } else break;
+        }
+        return s.toString();
+    }
 }
