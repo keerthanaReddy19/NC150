@@ -51,7 +51,7 @@ public class Anagram {
         }
 
         for(char c: t.toCharArray()){
-            HashMap<Character, Integer> t_count = new HashMap<>();
+            //HashMap<Character, Integer> t_count = new HashMap<>();
             if(s_count.containsKey(c))
             {
                 s_count.put(c,s_count.get(c)-1);
