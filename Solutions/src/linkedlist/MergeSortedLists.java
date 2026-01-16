@@ -1,11 +1,16 @@
 package linkedlist;
 
-/*
+/**
 LC 21: Given the heads of two sorted linked lists list1 and list2.
 
 Merge the two lists into one sorted list. The list should be made by splicing together the nodes of the first two lists.
 
 Return the head of the merged linked list.
+
+Time Complexity = O(n + m
+
+Space Complexity = O(1) (auxiliary)
+because we reuse the existing nodes and only use a constant number of pointers (dummy, tail, etc.).
  */
 
 class MergeSortedLists {
@@ -140,6 +145,49 @@ class MergeSortedLists {
 
         return answer;
     }
+
+
+    //revisit
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2)
+    {
+        ListNode list1_pointer = list1;
+        ListNode list2_pointer = list2;
+
+
+        ListNode dummy = new ListNode(0);
+        ListNode tail = dummy;
+
+        while(list1!=null && list2!=null)
+        {
+            if(list1.val<=list2.val)
+            {
+                tail.next = list1;
+                list1 = list1.next;
+            }
+            else
+            {
+                tail.next = list2;
+                list2 = list2.next;
+            }
+            tail = tail.next;
+        }
+
+        while(list1!=null)
+        {
+            tail = tail.next;
+            list1 = list1.next;
+        }
+
+        while(list2!=null)
+        {
+            tail.next = list2;
+            tail = tail.next;
+            list2 = list2.next;
+        }
+
+        return dummy.next;
+    }
+
 
     public static void main(String args[]) {
        Node a = new Node<>(1);

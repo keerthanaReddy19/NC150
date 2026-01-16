@@ -2,6 +2,8 @@ package linkedlist;
 
 /**
  * LC19: Given the head of a linked list, remove the nth node from the end of the list and return its head.
+ * TC: O(L)
+ * SC: O(1)
  */
 public class RemoveNode {
     /**
@@ -60,6 +62,36 @@ public class RemoveNode {
         }
 
         return head;
+    }
+
+    //re-visit
+    public ListNode removeNthFromEnd(ListNode head, int n)
+    {
+
+        ListNode dummy = new ListNode(-1);
+
+        ListNode p1 = dummy;
+        ListNode p2 = dummy;
+
+        dummy.next = head;
+
+
+        for(int i=0;i<n;i++)
+        {
+            p2 = p2.next;
+        }
+
+        //Move both
+        while(p2.next!=null)
+        {
+            p1 = p1.next;
+            p2 = p2.next;
+        }
+
+        ListNode to_delete = p1.next;
+        p1.next = to_delete.next;
+
+        return dummy.next;
     }
 
 

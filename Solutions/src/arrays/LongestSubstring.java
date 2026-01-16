@@ -2,7 +2,7 @@ package arrays;
 //LC 3
 import java.util.HashSet;
 
-public class longestSubstring {
+public class LongestSubstring {
     public int lengthOfLongestSubstring(String s)
     {
         if(s.length()==0)

@@ -1,6 +1,6 @@
 package arrays;
 //LC 5
-public class longestpalindrome {
+public class LongestPalindrome {
 
     public String longestPalindromeSubString(String s) {
 

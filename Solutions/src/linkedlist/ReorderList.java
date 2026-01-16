@@ -6,6 +6,12 @@ package linkedlist;
  * Reorder the list to be on the following form:
  * L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …
  * You may not modify the values in the list's nodes. Only nodes themselves may be changed.
+
+ * Approach:
+ * Find Middle Node O(n)
+ * Reverse second half O(n)
+ * Merge 2 halves O(n)
+ * SC: O(1) TC O(n)
  */
 public class ReorderList {
 
@@ -63,6 +69,84 @@ public class ReorderList {
 
         return head1;
     }
+
+    //re-visit (right parameters)
+    public void reorderList(ListNode head) {
+
+        //Find Middle Node - Fast n Slow pointer Approach
+
+        if(head==null)
+        {
+            return;
+        }
+
+        ListNode fast = head;
+        ListNode slow = head;
+        ListNode middle_node;
+
+
+        while(fast!=null && fast.next!=null)
+        {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        //Reverse second part of the list (from middle node)
+
+        //starting point: slow
+
+        ListNode prev = null;
+        ListNode current = slow;
+        ListNode next;
+
+        while(current!=null)
+        {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+
+
+
+        //Merge first half (head) and second half (prev)
+
+        ListNode dummy = new ListNode(0);
+        ListNode tail = dummy;
+        dummy.next = head;
+        int index = 0;
+
+
+        while(head!=null && prev!=null)
+        {
+            //even-index
+            if(index%2==0)
+            {
+                tail.next = head;
+                tail = tail.next;
+                head = head.next;
+                index++;
+            }
+            else
+            {
+                tail.next = prev;
+                tail = tail.next;
+                prev = prev.next;
+                index++;
+            }
+        }
+
+        if(head!=null)
+        {
+            tail = head.next;
+        }
+        if(prev!=null)
+        {
+            tail = prev.next;
+        }
+
+    }
+
 
     public static void main(String[] args)
     {
