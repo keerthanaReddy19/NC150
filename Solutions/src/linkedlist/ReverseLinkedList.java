@@ -21,7 +21,7 @@ public static Node<Integer> reverseList(Node<Integer> head)
     return prev;
 }
 //revisit
-public ListNode reverseList(ListNode head) {
+public static ListNode reverseList(ListNode head) {
     ListNode prev = null;
     ListNode current = head;
     ListNode next;

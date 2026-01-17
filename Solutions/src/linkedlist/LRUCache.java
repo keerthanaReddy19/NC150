@@ -1,6 +1,11 @@
 package linkedlist;
 
 import java.util.HashMap;
+
+/**
+ * LC 146
+ * TC: O(1), SC: O(c)
+ */
 public class LRUCache {
 
     HashMap<Integer, Node> map;
@@ -98,6 +103,137 @@ public class LRUCache {
         }
 
     }
+
+
+    //revisit
+//    class LRUCache
+//    {
+//        int capacity;
+//        Node head;
+//        Node tail;
+//        HashMap<Integer, Node> map_data = new HashMap<>();
+//
+//        class Node
+//        {
+//            int key, value;
+//            Node prev, next;
+//
+//            Node(int key, int value)
+//            {
+//                this.key = key;
+//                this.value = value;
+//            }
+//        }
+//
+//        public LRUCache(int capacity)
+//        {
+//            this.capacity = capacity;
+//            this.head = new Node(-1,-1);
+//            this.tail = new Node(-1,-1);
+//            head.next = tail;
+//            tail.prev = head;
+//        }
+//
+//
+//        public void removeNode(Node node)
+//        {
+//            /*
+//            update node prev
+//            update node next
+//            */
+//            node.next.prev = node.prev;
+//            node.prev.next = node.next;
+//
+//            node.prev = null;
+//            node.next = null;
+//
+//        }
+//
+//        public void addToHead(Node node)
+//        {
+//            /*
+//            update head node
+//            update node prev, next
+//            */
+//
+//            node.next = head.next;
+//            node.prev = head;
+//            head.next.prev = node;
+//            head.next = node;
+//
+//        }
+//
+//
+//
+//        public int get(int key)
+//        {
+//        /*
+//          look for key in HashMap, if present: get the node ref. else: -1
+//        - Remove the node from DLL, and add it in front (next to head)
+//        - Fetch the node.value from DLL
+//        */
+//
+//            if(map_data.containsKey(key))
+//            {
+//                Node node = map_data.get(key);
+//                removeNode(node);
+//                addToHead(node);
+//                return node.value;
+//            }
+//            else
+//            {
+//                return -1;
+//            }
+//        }
+//
+//        public void put(int key, int value)
+//        {
+//      /*
+//      if key present in map:
+//      -Fetch its node ref.
+//      -remove node from DLL
+//      -Add node to head
+//      -update node.val to new value;
+//
+//      if key not preesent:
+//      -check map size;
+//      if within capacity:
+//      -create new node, add to head
+//      -add node to hashmap.
+//      else:
+//      remove node prev to tail,
+//        -create new node, add to head
+//      -add node to hashmap.
+//      */
+//
+//            if(map_data.containsKey(key))
+//            {
+//                Node node = map_data.get(key);
+//                node.value = value;
+//                removeNode(node);
+//                addToHead(node);
+//            }
+//            else
+//            {
+//                if(map_data.size()<capacity)
+//                {
+//                    Node node = new Node(key, value);
+//                    addToHead(node);
+//                    map_data.put(key, node);
+//                }
+//                else
+//                {
+//                    Node last_node = tail.prev;
+//                    removeNode(last_node);
+//                    map_data.remove(last_node.key);
+//                    Node node = new Node(key, value);
+//                    addToHead(node);
+//                    map_data.put(key, node);
+//                }
+//            }
+//        }
+//    }
+
     public static void main(String[] args) {
         LRUCache cache = new LRUCache(2);
 
