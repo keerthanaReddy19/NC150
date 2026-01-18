@@ -14,7 +14,7 @@ LC 138
  map: original node -> copied node
 
  TC: O(n)
- SC: O(n)
+ SC: O(n) (HashMap)
  */
 
 
