@@ -2,8 +2,6 @@ package trees.recurssion;
 
 import trees.node.TreeNode;
 
-import static trees.recurssion.IdenticalTree.*;
-
 public class IdenticalSubTree {
     public boolean isSubtree(TreeNode root, TreeNode subRoot) {
 
@@ -11,7 +9,7 @@ public class IdenticalSubTree {
             return root == subRoot;
         }
         if (root.val == subRoot.val) {
-            if (isSameTree(root, subRoot)) {
+            if (IdenticalTree.isSameTree(root, subRoot)) {
                 return true;
             }
         }

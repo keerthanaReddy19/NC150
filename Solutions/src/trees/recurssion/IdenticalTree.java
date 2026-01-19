@@ -16,9 +16,28 @@ public class IdenticalTree {
 //
 //    }
 
-    public static boolean isSameTree(TreeNode p, TreeNode q) {
+//    public static boolean isSameTree(TreeNode p, TreeNode q) {
+//
+//        if(p == null || q == null)
+//        {
+//            return p == q;
+//        }
+//
+//        if(p.val!=q.val)
+//        {
+//            return false;
+//        }
+//        boolean  isLeft = isSameTree(p.left, q.left);
+//        boolean  isRight = isSameTree(p.right, q.right);
+//
+//
+//        return isLeft && isRight;
+//    }
 
-        if(p == null || q == null)
+    //revisit
+    public static boolean isSameTree(TreeNode p, TreeNode q)
+    {
+        if(p==null || q == null)
         {
             return p == q;
         }
@@ -27,10 +46,39 @@ public class IdenticalTree {
         {
             return false;
         }
-        boolean  isLeft = isSameTree(p.left, q.left);
-        boolean  isRight = isSameTree(p.right, q.right);
+
+        boolean isLeft = isSameTree(p.left, q.left);
+        boolean isRight = isSameTree(p.right, q.right);
 
 
         return isLeft && isRight;
+
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

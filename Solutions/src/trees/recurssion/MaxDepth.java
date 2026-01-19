@@ -1,13 +1,19 @@
 package trees.recurssion;
 /*
-
+LC 104
 Top-down Approach: Increase count at each level for left subtree and right subtree.
 Return the max count
 
 Bottom-down approach: Max(lh, rh) + 1;
 
+Tc: O(n)
+Sc: O(n)
  */
+
 import trees.node.TreeNode;
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class MaxDepth {
 
@@ -23,28 +29,58 @@ public class MaxDepth {
 //        return Math.max(lsum,rsum) + 1;
 //    }
 
-    public int maxDepth(TreeNode root)
-    {
+//
+
+    //revisit
+    public int maxDepth(TreeNode root) {
+
         if(root == null)
         {
             return 0;
         }
-        int c = 0;
-        return calcMaxDepth(root, 0);
 
+        int left = maxDepth(root.left);
+        int right = maxDepth(root.right);
+
+        return 1 + Math.max(left, right);
     }
-    public int calcMaxDepth(TreeNode root, int c)
-    {
 
-        if(root == null)
+    //iterative
+    public int maxTreeDepth(TreeNode root) {
+
+        if(root==null)
         {
-            return c;
+            return 0;
         }
-        int left_depth = calcMaxDepth(root.left, c+1);
+        Queue<TreeNode> q = new LinkedList<>();
 
+        q.add(root);
 
-        int right_depth = calcMaxDepth(root.right, c+1);
+        int depth = 0;
 
-        return Math.max(left_depth, right_depth);
+        while(!q.isEmpty())
+        {
+            int q_size = q.size();
+
+            for(int i=0;i<q_size;i++)
+            {
+                TreeNode curr = q.remove();
+
+                if(curr.left!=null)
+                {
+                    q.add(curr.left);
+                }
+                if(curr.right!=null)
+                {
+                    q.add(curr.right);
+                }
+            }
+            depth++;
+
+        }
+
+            return depth;
+
     }
 }
+

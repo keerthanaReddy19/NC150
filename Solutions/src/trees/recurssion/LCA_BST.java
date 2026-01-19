@@ -6,7 +6,7 @@ import trees.node.TreeNode;
  * 235
  */
 
-public class LCA {
+public class LCA_BST {
     public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if(root == null)
         {

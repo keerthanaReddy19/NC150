@@ -16,6 +16,7 @@ public class BFSTraversal {
         if (root == null) {
             return List.of();
         }
+
         q.add(root);
 
         while (!q.isEmpty()) {
