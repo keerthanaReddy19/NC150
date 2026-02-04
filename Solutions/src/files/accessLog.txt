@@ -1,0 +1,7 @@
+google.com/home=user1
+google.com/home=user2
+google.com/about=user1
+fb.com/login=user3
+fb.com/login=user1
+amazon.com/cart=user2
+amazon.com/cart=user2

@@ -1,5 +1,7 @@
 package trees.recurssion;
 
+import trees.node.TreeNode;
+
 public class Min_distance {
     TreeNode prev = null;
     int min_value = Integer.MAX_VALUE;
