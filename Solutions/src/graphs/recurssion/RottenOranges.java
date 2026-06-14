@@ -1,93 +1,76 @@
 package graphs.recurssion;
-import java.util.*;
 
-/* BFS
-First, scan the grid and enqueue all initially rotten oranges as starting points with time 0, marking them as visited since they are already rotten.
+/*
+    Queue : (row index, col index), time
+    Add all rotten oranges to the Queue, time: 0
 
-Use BFS to process the queue: for each orange removed, try all four directions (up, down, left, right).
+    remove from queue
+     BFS neighbours
+      if in bound & unvisited & fresh orange
+        rotten the fresh orange
+        add to queue
+    */
 
-Whenever a fresh orange is found that is not been visited, mark it visited, add it to the queue with time + 1, and continue the spread.
 
-While traversing, keep track of the maximum time encountered, which represents the total minutes passed.
+import java.util.LinkedList;
+import java.util.Queue;
 
-After BFS finishes, do one final pass over the grid to ensure no fresh orange was left unrotted (fresh but not visited).
-
-If any such orange exists, return -1; otherwise, return the maximum time recorded
- */
 
 public class RottenOranges {
-    public int orangesRotting(int[][] grid)
-    {
-        int ans = 0;
-        int col_size = grid[0].length;
-        int row_size = grid.length;
+    public int orangesRotting(int[][] grid) {
+        Queue<int[]> queue = new LinkedList<>();
 
-        Queue<int[]> q = new ArrayDeque<>();
-        boolean visited[][] = new boolean[row_size][col_size];
+        int rowSize = grid.length;
+        int colSize = grid[0].length;
+        int maxTime = 0;
 
-        for(int i = 0; i<row_size; i++)
-        {
-            for(int j = 0; j<col_size; j++)
-            {
-             if(grid[i][j]==2)
-             {
-                 q.add(new int[]{i, j,0});
-                 visited[i][j] = true;
-             }
+        // Add all rotten oranges first
+        for (int row = 0; row < rowSize; row++) {
+            for (int col = 0; col < colSize; col++) {
+                if (grid[row][col] == 2) {
+                    queue.add(new int[]{row, col, 0});
+                }
             }
         }
 
-        //BFS
+        int[][] directions = {
+                {1, 0}, {-1, 0}, {0, 1}, {0, -1}
+        };
 
-        while(!q.isEmpty()) {
-            //extract values
-            int rotten_orange[] = q.poll();
-            int r_index_i = rotten_orange[0];
-            int r_index_j = rotten_orange[1];
-            int time = rotten_orange[2];
+        while (!queue.isEmpty()) {
+            int[] current = queue.remove();
 
-            //track max_time
-            ans = Math.max(ans, time);
+            int row = current[0];
+            int col = current[1];
+            int time = current[2];
 
-            //extract neighbours
+            maxTime = Math.max(maxTime, time);
 
-            if (r_index_i + 1 < row_size && !visited[r_index_i + 1][r_index_j] && grid[r_index_i + 1][r_index_j] == 1) {
-                q.add(new int[]{r_index_i + 1, r_index_j, time + 1});
-                //mark visited as true. Here, we aren't mutating the grid to rotten, just tracking the index. So, just the visited array is being tracked for rotten orange
-                visited[r_index_i + 1][r_index_j] = true;
+            for (int[] dir : directions) {
+                int newRow = row + dir[0];
+                int newCol = col + dir[1];
 
+                if (newRow >= 0 && newRow < rowSize &&
+                        newCol >= 0 && newCol < colSize &&
+                        grid[newRow][newCol] == 1) {
+
+                    grid[newRow][newCol] = 2;
+                    queue.add(new int[]{newRow, newCol, time + 1});
+                }
             }
-
-            if (r_index_i - 1 >= 0 && !visited[r_index_i - 1][r_index_j] && grid[r_index_i - 1][r_index_j] == 1) {
-                q.add(new int[]{r_index_i - 1, r_index_j, time + 1});
-                visited[r_index_i - 1][r_index_j] = true;
-            }
-
-            if (r_index_j + 1 < col_size && !visited[r_index_i][r_index_j+1] && grid[r_index_i][r_index_j+1] == 1) {
-                q.add(new int[]{r_index_i, r_index_j+1, time + 1});
-                visited[r_index_i][r_index_j+1] = true;
-            }
-
-
-            if (r_index_j - 1 >= 0 && !visited[r_index_i][r_index_j-1] && grid[r_index_i][r_index_j-1] == 1) {
-                q.add(new int[]{r_index_i, r_index_j-1, time + 1});
-                visited[r_index_i][r_index_j-1] = true;
-            }
-
         }
 
-        //check for fresh orange
-        for(int i = 0; i<row_size; i++) {
-            for (int j = 0; j < col_size; j++) {
-                if (grid[i][j] == 1 && !visited[i][j]) {
+        // Check if any fresh orange remains
+        for (int row = 0; row < rowSize; row++) {
+            for (int col = 0; col < colSize; col++) {
+                if (grid[row][col] == 1) {
                     return -1;
                 }
             }
         }
 
-
-
-
-       return ans; //time
+        return maxTime;
     }
 }
+
+

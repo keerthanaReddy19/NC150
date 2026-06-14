@@ -1,5 +1,46 @@
 package arrays;
+/*
+        0 1 2
+nums = [1,2,3], k = 3
 
+prefix_sum = 1,
+count = 0
+sum = 1
+
+0:
+prefix_sum[0] = 1;
+count = 0
+sum = 1
+j = prefix_sum[0] - 3 = 2
+Freq_sum: j? -2? NO
+
+1:
+prefix_sum[1] : 3
+sum = 3
+j = prefix_sum[1]-K = 3-3 =0
+count = 1
+
+
+
+2:
+prefix[2] = 6
+sum = 6
+j= 3
+count = 2
+
+
+
+
+
+freq_sum - K           V
+         prefix_sum   count
+           0           1
+           1           1
+           3           1
+           6           1
+
+
+ */
 import java.util.HashMap;
 
 public class SubArraySum {

@@ -2,6 +2,34 @@ package arrays;
 //LC 5
 public class LongestPalindrome {
 
+    /*
+    Input: s = "babad"
+    Output:    "bab"
+
+
+     s = 0
+     e = 0
+
+  0 1 2 3 4
+  b a b a d
+L
+    R
+
+    Max: 1
+
+ 0:   even: search(i, i, s)
+      - search(0,0,"babad"):
+        - s.charAt(left_index)==s.charAt(right_index)):
+         - equal: so return right_index-left_index-1 = return 1
+
+
+     odd = search(i, i+1, s)
+            search(0,1,babab)
+             -  s.charAt(left_index)==s.charAt(right_index):
+              - No : return 0
+
+     bab    ad
+     */
     public String longestPalindromeSubString(String s) {
 
         if(s==null || s.length() == 0)
